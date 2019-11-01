@@ -12,7 +12,7 @@ public class Knife : Weapon
     [SerializeField]
     private float _knifingDistance = 5;
     [SerializeField]
-    private LayerMask _enemyLayerMask = 9;
+    private int _enemyLayerMask = 9;
     [SerializeField]
     private Transform _playerPosition = null;
 
@@ -68,10 +68,9 @@ public class Knife : Weapon
 
     private bool CheckIfEnemyHit(out RaycastHit hit)
     {
-        Ray knifeRay = new Ray(_playerPosition.position, transform.forward);
-        Debug.DrawRay(knifeRay.origin, knifeRay.direction);
+        Ray knifeRay = new Ray(_playerPosition.position - (Vector3.up / 2), transform.forward);
 
-        if(Physics.Raycast(knifeRay,out hit, _knifingDistance, _enemyLayerMask))
+        if(Physics.Raycast(knifeRay,out hit, _knifingDistance))
         {
             return true;
         }
@@ -82,14 +81,17 @@ public class Knife : Weapon
     private void CalculateIfPlayerHitsFromBehind(RaycastHit hit)
     {
         Vector3 playerForwardVector = transform.forward;
-        Vector3 enemyForwardVector = hit.collider.transform.forward;
+        Vector3 enemyForwardVector = hit.collider.gameObject.transform.forward;
 
+        
         //reset height
         playerForwardVector.y = enemyForwardVector.y;
-
+        Debug.DrawRay(hit.collider.transform.position, hit.collider.gameObject.transform.forward, Color.red, 3.0f);
+        Debug.DrawRay(this.transform.position, transform.forward, Color.green, 3.0f);
         //check if player attacks from behind
         float dotProductResult = Vector3.Dot(playerForwardVector, enemyForwardVector);
-
+        dotProductResult = dotProductResult / (playerForwardVector.magnitude * enemyForwardVector.magnitude);
+        Debug.Log(Mathf.Acos(dotProductResult));
         if (Mathf.Acos(dotProductResult) < _acceptedAngleFromBehindInRadians)
         {
             _takeOverBehaviour.TakeOver(hit.collider.gameObject);

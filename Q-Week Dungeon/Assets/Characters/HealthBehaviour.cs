@@ -8,6 +8,7 @@ public class HealthBehaviour : MonoBehaviour
     private int _startHealth = 0;
 
     private int _currentHealth = 0;
+    public int CurrentHealth { get { return _currentHealth; }}
 
     private void Awake()
     {
@@ -16,12 +17,14 @@ public class HealthBehaviour : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
-            Invoke("Kill", 0.02f);
     }
 
     public void Kill()
+    {
+        Invoke("Destroy", 0.05f);
+    }
+
+    private void Destroy()
     {
         Destroy(gameObject);
     }

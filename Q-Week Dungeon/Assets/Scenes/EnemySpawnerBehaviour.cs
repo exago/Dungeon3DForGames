@@ -3,32 +3,36 @@
 public class EnemySpawnerBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] _enemiesArray;
+    private GameObject _enemy = null;
+    [SerializeField]
+    private int _amountOfEnemies;
 
     [SerializeField]
     private float _radius = 5;
-    private float _offset = 0;
+
+    [SerializeField]
+    private bool _circleSpawn = false;
+
 
     private void Awake()
     {
-        SpawnCircle(0 ,5 );
-        SpawnCircle(0, 5);
-        SpawnPoint(0);
+        if (_circleSpawn)
+            SpawnCircle();
+        else
+            SpawnPoint();
     }
 
-    private void SpawnPoint(int index)
+    private void SpawnPoint()
     {
-        Instantiate(_enemiesArray[index], this.transform.position, _enemiesArray[index].transform.rotation);
+        Instantiate(_enemy, this.transform.position, _enemy.transform.rotation);
     }
 
-    private void SpawnCircle(int index, float amount)
+    private void SpawnCircle()
     {
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < _amountOfEnemies; i++)
         {
-            Instantiate(_enemiesArray[index], SpawnPositionCircle(i, amount), _enemiesArray[index].transform.rotation);
+            Instantiate(_enemy, SpawnPositionCircle(i, _amountOfEnemies), _enemy.transform.rotation);
         }
-
-        _offset += Mathf.PI / 5;
 
     }
 
@@ -36,7 +40,6 @@ public class EnemySpawnerBehaviour : MonoBehaviour
     {
         float angle = 360 / amount;
         angle *= i;
-        angle += _offset;
 
         float x = this.transform.position.x + _radius * Mathf.Sin(angle * Mathf.Deg2Rad);
         float y = this.transform.position.y;

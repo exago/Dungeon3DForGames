@@ -208,10 +208,8 @@ MonoBehaviour:
   _fireOutputPositions: []
   _damage: 0
   _acceptedAngleFromBehind: 45
-  _knifingDistance: 2.5
-  _enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  _knifingDistance: 3.5
+  _enemyLayerMask: 9
   _playerPosition: {fileID: 0}
 --- !u!1 &5726779842706037033
 GameObject:

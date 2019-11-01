@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Reload"))
             ShootingBehaviour.Reload();
 
-        if (Input.GetButtonDown("Stealth") && _takeOverBehaviour.TakenOver )
+        if (Input.GetButtonDown("Stealth") && !_takeOverBehaviour.TakenOver )
             _stealthBehaviour.ToggleStealth();
 
         if (Input.GetButtonDown("Interact"))
