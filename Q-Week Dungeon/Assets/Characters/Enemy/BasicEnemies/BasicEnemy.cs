@@ -33,7 +33,7 @@ public class BasicEnemy : Enemy
 
     private void WalkToPlayer()
     {
-        _movementBehaviour.TargetPosition = _player.position;
+        _movementBehaviour.DesiredMovementDirection = (_player.position - transform.position).normalized;
     }
     private void InSightCalculation()
     {
@@ -80,7 +80,9 @@ public class BasicEnemy : Enemy
 
     private void LookAtPlayer()
     {
-        _movementBehaviour.DesiredLookAtPoint = _player.position;
+        Vector3 lookAtPoint = _player.position;
+        lookAtPoint.y = this.transform.position.y;
+        _movementBehaviour.DesiredLookAtPoint = lookAtPoint;
     }
 
 }

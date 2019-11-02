@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private StealthBehaviour _stealthBehaviour = null;
     private TakeOverBehaviour _takeOverBehaviour = null;
     private InterActionBehavior _interActionBehaviour = null;
+    private HealthBehaviour _healthBehaviour = null;
 
     private void Awake()
     {
@@ -16,14 +17,17 @@ public class Player : MonoBehaviour
         _stealthBehaviour = GetComponent<StealthBehaviour>();
         _takeOverBehaviour = GetComponent<TakeOverBehaviour>();
         _interActionBehaviour = GetComponent<InterActionBehavior>();
+        _healthBehaviour = GetComponent<HealthBehaviour>();
     }
 
     private void Update()
     {
         HandleGeneralInput();
+        HandleHealth();
     }
 
-    
+  
+
     private void FixedUpdate()
     {
         HandleMovementInput();
@@ -71,5 +75,16 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
             _interActionBehaviour.Interact();
     }
+    private void HandleHealth()
+    {
+        if(_healthBehaviour.CurrentHealth <= 0)
+        {
+            DoWhenDead();
+        }
+    }
 
+    private void DoWhenDead()
+    {
+        _healthBehaviour.Kill();
+    }
 }

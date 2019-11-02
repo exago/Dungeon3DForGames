@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
     protected ShootingBehaviour _shootingBehaviour = null;
 
     protected StealthBehaviour _playerStealthBehaviour = null;
+    protected HealthBehaviour _healthBehaviour = null;
+    protected LootDropBehaviour _lootDropBehaviour = null;
 
     protected Transform _player = null;
     [SerializeField]
@@ -25,6 +27,8 @@ public class Enemy : MonoBehaviour
     {
         _movementBehaviour = GetComponent<MovementBehaviour>();
         _shootingBehaviour = GetComponent<ShootingBehaviour>();
+        _healthBehaviour = GetComponent<HealthBehaviour>();
+        _lootDropBehaviour = GetComponent<LootDropBehaviour>();
 
         _state = EnemyState.passive;
 
@@ -36,9 +40,16 @@ public class Enemy : MonoBehaviour
     protected void Update()
     {
         BehaviourPerState();
+        
+        if(_healthBehaviour.CurrentHealth <= 0)
+        {
+            DoWhenDead();
+        }
     }
 
     protected virtual void BehaviourPerState() { }
+
+    protected virtual void DoWhenDead() { _healthBehaviour.Kill(); _lootDropBehaviour.Drop(); }
 
 
     protected void CheckForReload()

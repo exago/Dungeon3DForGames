@@ -10,9 +10,15 @@ public class HealthBehaviour : MonoBehaviour
     private int _currentHealth = 0;
     public int CurrentHealth { get { return _currentHealth; }}
 
-    private void Awake()
+
+    protected virtual void Awake()
     {
         _currentHealth = _startHealth;
+    }
+
+    protected virtual void DoOnDeath()
+    {
+        Debug.Log(this.gameObject.name + " is dead");
     }
     public void TakeDamage(int damage)
     {

@@ -59,8 +59,6 @@ public class TakeOverBehaviour : MonoBehaviour
             _playerStealthBehaviour.ToggleStealth();
 
         target.GetComponent<MovementBehaviour>().enabled = false;
-        target.GetComponent<NavMeshMovementBehaviour>().enabled = false;
-        target.GetComponent<NavMeshAgent>().enabled = false;
         target.GetComponent<Enemy>().enabled = false;
 
         _playerScript.MovementBehaviour.Rigidbody = target.GetComponent<Rigidbody>();

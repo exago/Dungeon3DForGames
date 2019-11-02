@@ -12,7 +12,7 @@ public class Knife : Weapon
     [SerializeField]
     private float _knifingDistance = 5;
     [SerializeField]
-    private int _enemyLayerMask = 9;
+    private LayerMask _enemyLayerMask = 9;
     [SerializeField]
     private Transform _playerPosition = null;
 
@@ -70,7 +70,7 @@ public class Knife : Weapon
     {
         Ray knifeRay = new Ray(_playerPosition.position - (Vector3.up / 2), transform.forward);
 
-        if(Physics.Raycast(knifeRay,out hit, _knifingDistance))
+        if(Physics.Raycast(knifeRay,out hit, _knifingDistance, _enemyLayerMask))
         {
             return true;
         }

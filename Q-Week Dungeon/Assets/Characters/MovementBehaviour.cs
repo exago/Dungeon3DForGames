@@ -17,13 +17,11 @@ public class MovementBehaviour : MonoBehaviour
     protected Vector3 _desiredLookAtPoint = Vector3.zero;
     public Vector3 DesiredLookAtPoint { get { return _desiredLookAtPoint; } set { _desiredLookAtPoint = value; } }
     
-    protected Vector3 _targetPosition = Vector3.zero;
-    public Vector3 TargetPosition { get { return _targetPosition; } set { _targetPosition = value; } }
 
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _desiredLookAtPoint = this.transform.position + transform.forward;
+        _desiredLookAtPoint =  transform.forward;
     }
 
     // Update is called once per frame

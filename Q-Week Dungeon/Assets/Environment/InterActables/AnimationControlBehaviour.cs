@@ -9,6 +9,9 @@ public class AnimationControlBehaviour : MonoBehaviour
     private bool _isOpen = false;
     public bool IsOpen { get { return _isOpen; } set { _isOpen = value; _animator.SetBool("isOpen", _isOpen); } }
 
+    private bool _isExploding = false;
+    public bool IsExploding { get { return _isExploding; } set { _isExploding = value; _animator.SetBool("isExploding", _isExploding); } }
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
