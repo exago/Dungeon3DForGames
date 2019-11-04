@@ -92,7 +92,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _primaryGunTemplate
       value: 
-      objectReference: {fileID: 2828215354523004181, guid: 2a9d79de0243cef47bc8c75afa8e348b,
+      objectReference: {fileID: 5142113915974699866, guid: 46d859293cd207c4db18f6320a9a289d,
         type: 3}
     - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
