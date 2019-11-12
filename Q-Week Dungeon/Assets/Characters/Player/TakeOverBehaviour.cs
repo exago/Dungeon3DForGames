@@ -14,11 +14,14 @@ public class TakeOverBehaviour : MonoBehaviour
     private GameObject _visuals = null;
     [SerializeField]
     private GameObject _logistics = null;
+    [SerializeField]
+    private int _knockBackPower = 20;
 
     private Rigidbody _playerRigidbody = null;
     private ShootingBehaviour _playerShootingBehaviour = null;
     private StealthBehaviour _playerStealthBehaviour = null;
     private Collider _playerCollider = null;
+    private HealthBehaviour _healthBehaviour = null;
 
     private GameObject _takeOverObject = null;
     public bool TakenOver = false;
@@ -31,6 +34,7 @@ public class TakeOverBehaviour : MonoBehaviour
         _playerShootingBehaviour = _playerScript.GetComponent<ShootingBehaviour>();
         _playerStealthBehaviour = _playerScript.GetComponent<StealthBehaviour>();
         _playerCollider = _playerScript.GetComponent<Collider>();
+        _healthBehaviour = _playerScript.GetComponent<HealthBehaviour>();
     }
 
     private void Update()
@@ -64,11 +68,18 @@ public class TakeOverBehaviour : MonoBehaviour
         _playerScript.MovementBehaviour.Rigidbody = target.GetComponent<Rigidbody>();
         _playerScript.MovementBehaviour.Rigidbody.isKinematic = false;
         _playerScript.ShootingBehaviour = target.GetComponent<ShootingBehaviour>();
+        _playerScript.HealthBehaviour = target.GetComponent<HealthBehaviour>();
         TakenOver = true;
     }
 
     public void ReturnToNormal()
     {
+        if(_takeOverObject != null)
+        {
+            _takeOverObject.GetComponent<Enemy>().DoWhenDead();
+            _takeOverObject = null;
+        }        
+
         _playerCollider.enabled = true;
         gameObject.layer = 0;
         _visuals.SetActive(true);
@@ -76,10 +87,13 @@ public class TakeOverBehaviour : MonoBehaviour
 
         this.transform.position = transform.position + Vector3.up;
         _playerRigidbody.position = _playerRigidbody.position + Vector3.up;
+        Debug.Log("push");
+        _playerRigidbody.AddForce(_knockBackPower * -transform.forward.normalized, ForceMode.Impulse);
 
 
         _playerScript.MovementBehaviour.Rigidbody = _playerRigidbody;
         _playerScript.ShootingBehaviour = _playerShootingBehaviour;
+        _playerScript.HealthBehaviour = _healthBehaviour;
 
         TakenOver = false;
 

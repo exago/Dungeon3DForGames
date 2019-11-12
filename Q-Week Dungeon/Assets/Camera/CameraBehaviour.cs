@@ -23,19 +23,13 @@ public class CameraBehaviour : MonoBehaviour
         _previousPlayerPosition = _playerPosition.position;
         offset = this.transform.position - _playerPosition.position ;
     }
-    private void Update()
-    {
-        if (_playerPosition != null)
-        {
-            UpdatePosition();
-        }
-    }
     private void FixedUpdate()
     {
         if (_playerPosition != null)
         {
             movement = Vector3.zero;
             HandleMousePosition();
+            UpdatePosition();
         }
     }
     private void HandleMousePosition()

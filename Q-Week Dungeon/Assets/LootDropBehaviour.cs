@@ -9,7 +9,8 @@ public class LootDropBehaviour : MonoBehaviour
 
     public void Drop()
     {
-        Instantiate(CalculateDrop(), this.transform.position, this.transform.rotation);
+        if(_possibleDrops.Length>0)
+            Instantiate(CalculateDrop(), this.transform.position, this.transform.rotation);
     }
 
     private GameObject CalculateDrop()

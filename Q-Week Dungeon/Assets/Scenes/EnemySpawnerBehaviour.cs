@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EnemySpawnerBehaviour : MonoBehaviour
 {
@@ -31,9 +32,22 @@ public class EnemySpawnerBehaviour : MonoBehaviour
     {
         for (int i = 0; i < _amountOfEnemies; i++)
         {
-            Instantiate(_enemy, SpawnPositionCircle(i, _amountOfEnemies), _enemy.transform.rotation);
+            Vector3 spawnPosition = SpawnPositionCircle(i, _amountOfEnemies);
+            GameObject newEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity) ;
+            newEnemy.GetComponent<MovementBehaviour>().DesiredLookAtPoint = this.transform.position;
         }
 
+    }
+
+    private Quaternion CalculateRotation(int i, float amount)
+    {
+        float angle = 360 / amount;
+        angle *= i + 90;
+
+        Quaternion rotation = Quaternion.Euler(0, angle, 0);
+        Debug.Log(rotation.eulerAngles);
+
+        return rotation;
     }
 
     private Vector3 SpawnPositionCircle(int i, float amount)

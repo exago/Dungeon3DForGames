@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void BehaviourPerState() { }
 
-    protected virtual void DoWhenDead() { _healthBehaviour.Kill(); _lootDropBehaviour.Drop(); }
+    public virtual void DoWhenDead() { _healthBehaviour.Kill(); _lootDropBehaviour.Drop(); }
 
 
     protected void CheckForReload()

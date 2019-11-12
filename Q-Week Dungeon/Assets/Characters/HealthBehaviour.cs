@@ -6,9 +6,14 @@ public class HealthBehaviour : MonoBehaviour
 {
     [SerializeField]
     private int _startHealth = 0;
+    public int StartHealth { get { return _startHealth; } }
 
     private int _currentHealth = 0;
     public int CurrentHealth { get { return _currentHealth; }}
+
+    [SerializeField]
+    private int _maxHealth = 3;
+    public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
 
 
     protected virtual void Awake()
@@ -16,12 +21,9 @@ public class HealthBehaviour : MonoBehaviour
         _currentHealth = _startHealth;
     }
 
-    protected virtual void DoOnDeath()
-    {
-        Debug.Log(this.gameObject.name + " is dead");
-    }
     public void TakeDamage(int damage)
     {
+        Debug.Log(this.gameObject.name + " took damage: " + damage);
         _currentHealth -= damage;
     }
 

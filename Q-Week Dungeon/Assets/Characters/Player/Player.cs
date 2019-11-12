@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     private StealthBehaviour _stealthBehaviour = null;
     private TakeOverBehaviour _takeOverBehaviour = null;
     private InterActionBehavior _interActionBehaviour = null;
-    private HealthBehaviour _healthBehaviour = null;
+    public HealthBehaviour HealthBehaviour = null;
+    private DefendingBehaviour _defendingBehaviour = null;
 
     private void Awake()
     {
@@ -17,7 +18,8 @@ public class Player : MonoBehaviour
         _stealthBehaviour = GetComponent<StealthBehaviour>();
         _takeOverBehaviour = GetComponent<TakeOverBehaviour>();
         _interActionBehaviour = GetComponent<InterActionBehavior>();
-        _healthBehaviour = GetComponent<HealthBehaviour>();
+        HealthBehaviour = GetComponent<HealthBehaviour>();
+        _defendingBehaviour = GetComponent<DefendingBehaviour>();
     }
 
     private void Update()
@@ -62,9 +64,14 @@ public class Player : MonoBehaviour
     }
     private void HandleGeneralInput()
     {
-
-        if (Input.GetButton("Fire"))
+        if (Input.GetButton("Fire") && _takeOverBehaviour.TakenOver)
             ShootingBehaviour.Fire();
+
+        if (Input.GetButtonDown("Fire") && !_takeOverBehaviour.TakenOver)
+            ShootingBehaviour.Fire();
+        
+        if (Input.GetButton("Defend"))
+            _defendingBehaviour.Defend();
 
         if (Input.GetButtonDown("Reload"))
             ShootingBehaviour.Reload();
@@ -77,7 +84,7 @@ public class Player : MonoBehaviour
     }
     private void HandleHealth()
     {
-        if(_healthBehaviour.CurrentHealth <= 0)
+        if(HealthBehaviour.CurrentHealth <= 0)
         {
             DoWhenDead();
         }
@@ -85,6 +92,13 @@ public class Player : MonoBehaviour
 
     private void DoWhenDead()
     {
-        _healthBehaviour.Kill();
+        if(_takeOverBehaviour.TakenOver)
+        {
+            _takeOverBehaviour.ReturnToNormal();
+        }
+        else
+        {
+            HealthBehaviour.Kill();
+        }
     }
 }

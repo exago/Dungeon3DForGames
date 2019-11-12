@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     protected float _lifeTime = 3.0f;
 
+    private bool _canDamage = true;
+
     protected virtual void Awake()
     {
 
@@ -27,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         HealthBehaviour health = other.gameObject.GetComponent<HealthBehaviour>();
 
-        if(health != null)
+        if(health != null && _canDamage)
         {
             health.TakeDamage(_damage);
         }
@@ -36,9 +38,10 @@ public class Bullet : MonoBehaviour
             Debug.Log(other.gameObject + "cannot take damage");
         }
 
-        
+        _canDamage = false;
         Invoke("Kill", 0.02f);
     }
+
     protected virtual void CalculatePath() 
     {
         

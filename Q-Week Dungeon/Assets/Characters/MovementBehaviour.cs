@@ -15,7 +15,7 @@ public class MovementBehaviour : MonoBehaviour
     public Vector3 DesiredMovementDirection { get { return _desiredMovementDirection; } set { _desiredMovementDirection = value; } }
 
     protected Vector3 _desiredLookAtPoint = Vector3.zero;
-    public Vector3 DesiredLookAtPoint { get { return _desiredLookAtPoint; } set { _desiredLookAtPoint = value; } }
+    public Vector3 DesiredLookAtPoint { get { return _desiredLookAtPoint; } set {   _desiredLookAtPoint = value; } }
     
 
     protected virtual void Awake()
@@ -46,6 +46,7 @@ public class MovementBehaviour : MonoBehaviour
 
     protected virtual void HandleRotation()
     {
+        _desiredLookAtPoint.y = this.transform.position.y;
         transform.LookAt(_desiredLookAtPoint, Vector3.up);
         Rigidbody.rotation = transform.rotation;
     }
