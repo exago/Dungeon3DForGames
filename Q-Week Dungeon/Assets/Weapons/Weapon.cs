@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Weapon : MonoBehaviour
 {
@@ -28,9 +30,19 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected int _damage = 0;
 
+    public Sprite Icon = null;
+
+    [SerializeField] private float _soundRadius = 0.0f;
+    public float SoundRadius { get { return _soundRadius; } set { _soundRadius = value; } }
+
     private void Awake()
     {
         _ammo = MagazineSize;
+    }
+
+    public virtual void Release()
+    {
+        
     }
 
     private void Update()

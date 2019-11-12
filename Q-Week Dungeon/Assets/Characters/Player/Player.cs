@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
         HandleMovementInput();
     }
 
+
+
     private void HandleMovementInput()
     {
         if (MovementBehaviour == null)
@@ -64,11 +66,11 @@ public class Player : MonoBehaviour
     }
     private void HandleGeneralInput()
     {
-        if (Input.GetButton("Fire") && _takeOverBehaviour.TakenOver)
-            ShootingBehaviour.Fire();
+        if (Input.GetButtonUp("Fire"))
+            ShootingBehaviour.Release();
 
-        if (Input.GetButtonDown("Fire") && !_takeOverBehaviour.TakenOver)
-            ShootingBehaviour.Fire();
+        if (Input.GetButton("Fire"))
+            ShootingBehaviour.Fire();        
         
         if (Input.GetButton("Defend"))
             _defendingBehaviour.Defend();

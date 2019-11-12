@@ -207,6 +207,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 0}
   _fireOutputPositions: []
   _damage: 0
+  Icon: {fileID: 21300000, guid: 381874c54d32f784c94716b41d5d5a81, type: 3}
   _acceptedAngleFromBehind: 45
   _knifingDistance: 3.5
   _enemyLayerMask:

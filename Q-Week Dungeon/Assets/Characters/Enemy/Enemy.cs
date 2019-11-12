@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected float _attackRadius = 15.0f;
     [SerializeField]
+    protected float _distanceToCloseIn = 5f;
+    [SerializeField]
     protected float _attentionAngleInDegrees = 120.0f; //between 1 ° and 89°
     protected float _attentionAngleInRadians = 0.0f;
 
@@ -21,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     protected float _alertedToActiveTimer = 0.0f;
 
-    protected EnemyState _state = EnemyState.passive;
+    public EnemyState State = EnemyState.passive;
 
     protected void Awake()
     {
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour
         _healthBehaviour = GetComponent<HealthBehaviour>();
         _lootDropBehaviour = GetComponent<LootDropBehaviour>();
 
-        _state = EnemyState.passive;
+        State = EnemyState.passive;
 
         _player = FindObjectOfType<Player>().transform;
         _playerStealthBehaviour = _player.GetComponent<StealthBehaviour>();
@@ -49,13 +51,13 @@ public class Enemy : MonoBehaviour
 
     protected virtual void BehaviourPerState() { }
 
-    public virtual void DoWhenDead() { _healthBehaviour.Kill(); _lootDropBehaviour.Drop(); }
+    public virtual void DoWhenDead() { _healthBehaviour.Kill(); _lootDropBehaviour.Drop(); RoomManager.SetEnemyCounterAsync(); }
 
 
     protected void CheckForReload()
     {
-        int currentAmmo = _shootingBehaviour._currentWeapon.Ammo;
-        int magazineSize = _shootingBehaviour._currentWeapon.MagazineSize;
+        int currentAmmo = _shootingBehaviour.CurrentWeapon.Ammo;
+        int magazineSize = _shootingBehaviour.CurrentWeapon.MagazineSize;
 
         if (currentAmmo == magazineSize)
             return;
@@ -63,20 +65,19 @@ public class Enemy : MonoBehaviour
         if (currentAmmo == 0)
             _shootingBehaviour.Reload();
 
-        if (_state == EnemyState.passive)
+        if (State == EnemyState.passive)
             _shootingBehaviour.Reload();
     }
 
     protected void SetActive()
     {
         if (_alertedToActiveTimer >= _enemyTimeToTakeAction)
-            _state = EnemyState.active;
+            State = EnemyState.active;
     }
 
     protected void UpdateActiveAndAlertedState()
     {
         _alertedToActiveTimer += Time.deltaTime;
     }
-
     
 }

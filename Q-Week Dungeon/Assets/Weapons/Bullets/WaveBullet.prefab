@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b31c1dc8b031408ef250dc1b0d61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 12
+  _movementSpeed: 20
   _lifeTime: 3
   _amplitude: 4
   _frequency: 8
-  _increaseAmplitudeOverTime: 0.03
+  _increaseAmplitudeOverTime: 0.08
 --- !u!1001 &6330791540232718623
 PrefabInstance:
   m_ObjectHideFlags: 0

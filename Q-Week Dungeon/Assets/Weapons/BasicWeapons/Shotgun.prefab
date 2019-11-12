@@ -305,6 +305,8 @@ MonoBehaviour:
   - {fileID: 9200298403541676917}
   - {fileID: 6241886255856882595}
   _damage: 10
+  Icon: {fileID: 21300000, guid: ed770402f67c6d74191285251c91116a, type: 3}
+  _soundRadius: 30
 --- !u!1 &7484656831353531139
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,6 +70,9 @@ public class TakeOverBehaviour : MonoBehaviour
         _playerScript.ShootingBehaviour = target.GetComponent<ShootingBehaviour>();
         _playerScript.HealthBehaviour = target.GetComponent<HealthBehaviour>();
         TakenOver = true;
+        _takeOverObject.layer = 13;
+
+        RoomManager.SetEnemyCounterAsync();
     }
 
     public void ReturnToNormal()
@@ -96,6 +99,9 @@ public class TakeOverBehaviour : MonoBehaviour
         _playerScript.HealthBehaviour = _healthBehaviour;
 
         TakenOver = false;
+        _takeOverObject.layer = 9;
+
+        RoomManager.SetEnemyCounterAsync();
 
     }
 }

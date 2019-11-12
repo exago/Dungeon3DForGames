@@ -162,8 +162,9 @@ MonoBehaviour:
     type: 3}
   _fireOutputPositions:
   - {fileID: 7245832100093853238}
-  _gunState: 0
   _damage: 20
+  Icon: {fileID: 21300000, guid: 2ce04e279bb2a8e438fd1f03192ab22e, type: 3}
+  _soundRadius: 22
 --- !u!1 &4207267264885702352
 GameObject:
   m_ObjectHideFlags: 0

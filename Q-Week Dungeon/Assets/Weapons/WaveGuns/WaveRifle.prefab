@@ -15,12 +15,14 @@ MonoBehaviour:
   _magazineSize: 20
   _attackSpeed: 0.3
   _reloadTime: 1.2
-  _bulletSpeed: 5
+  _bulletSpeed: 16
   _bulletPrefab: {fileID: 4333886570123629651, guid: b8401dd8ae7705b46a87ca42865aef04,
     type: 3}
   _fireOutputPositions:
   - {fileID: 355219608180004985}
   _damage: 10
+  Icon: {fileID: 21300000, guid: a5e7ce25e1c71a54f89bd26183e9354b, type: 3}
+  _soundRadius: 0
 --- !u!1001 &6945575085413885519
 PrefabInstance:
   m_ObjectHideFlags: 0

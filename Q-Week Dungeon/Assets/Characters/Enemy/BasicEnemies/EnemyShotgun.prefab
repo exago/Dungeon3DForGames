@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: _startHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7575141118748401395, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,17 +87,17 @@ PrefabInstance:
       propertyPath: _attentionAngleInDegrees
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2638639081380539063, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: _movementSpeed
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 524321922220167706, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: _primaryGunTemplate
       value: 
       objectReference: {fileID: 6890024235727716263, guid: 11956ba0c5afa4842a4493ea71246292,
         type: 3}
-    - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
-        type: 3}
-      propertyPath: _startHealth
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 5014012367777599204, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: m_IsKinematic

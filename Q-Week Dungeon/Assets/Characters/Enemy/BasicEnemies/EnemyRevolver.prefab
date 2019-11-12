@@ -204,8 +204,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRadius: 20
+  _distanceToCloseIn: 6
   _attentionAngleInDegrees: 60
   _enemyTimeToTakeAction: 1
+  State: 0
 --- !u!114 &524321922220167706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +223,7 @@ MonoBehaviour:
   _primaryGunTemplate: {fileID: 7376287239233456693, guid: 7f0d1dd9e6461f64f839b27d66ee254a,
     type: 3}
   _primarySocket: {fileID: 7512224607770884654}
-  _currentWeapon: {fileID: 0}
+  CurrentWeapon: {fileID: 0}
 --- !u!114 &7873934306817423157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1fb14989d13ba40ad759493b9b15c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _movementSpeed: 9
 --- !u!54 &2893719989512442540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -261,8 +263,8 @@ Rigidbody:
   m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &8356136979131762470

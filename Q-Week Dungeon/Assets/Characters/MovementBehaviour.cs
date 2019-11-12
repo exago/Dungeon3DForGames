@@ -27,7 +27,6 @@ public class MovementBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-     
         HandleMovement();
         HandleRotation();
     }
@@ -35,7 +34,7 @@ public class MovementBehaviour : MonoBehaviour
     protected virtual void HandleMovement()
     {
         Vector3 movement = _desiredMovementDirection * _movementSpeed * Time.deltaTime;
-        
+
         if(_rigidbody == null)
             _rigidbody = this.gameObject.GetComponent<Rigidbody>();
         else
@@ -47,7 +46,7 @@ public class MovementBehaviour : MonoBehaviour
     protected virtual void HandleRotation()
     {
         _desiredLookAtPoint.y = this.transform.position.y;
-        transform.LookAt(_desiredLookAtPoint, Vector3.up);
-        Rigidbody.rotation = transform.rotation;
+        //transform.LookAt(_desiredLookAtPoint, Vector3.up);
+        Rigidbody.MoveRotation(Quaternion.LookRotation(_desiredLookAtPoint - this.transform.position, Vector3.up));
     }
 }

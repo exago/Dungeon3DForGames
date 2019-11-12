@@ -6,15 +6,13 @@ public class BasicEnemy : Enemy
     {
         CheckEnemyState();
 
-        switch (_state)
+        switch (State)
         {
             case EnemyState.passive:
-               
                 CheckForReload();
                 break;
 
             case EnemyState.active:
-                
                 WalkToPlayer();
                 LookAtPlayer();
                 CheckDistanceForShooting();
@@ -22,7 +20,6 @@ public class BasicEnemy : Enemy
                 break;
 
             case EnemyState.alerted:
-                
                 LookAtPlayer();
                 UpdateActiveAndAlertedState();
                 SetActive();
@@ -33,7 +30,12 @@ public class BasicEnemy : Enemy
 
     private void WalkToPlayer()
     {
-        _movementBehaviour.DesiredMovementDirection = (_player.position - transform.position).normalized;
+        float distance = Vector3.Distance(this.transform.position, _player.transform.position);
+
+        if (distance > _distanceToCloseIn)
+            _movementBehaviour.DesiredMovementDirection = (_player.position - transform.position).normalized;
+        else
+            _movementBehaviour.DesiredMovementDirection = Vector3.zero;
     }
     private void InSightCalculation()
     {
@@ -48,7 +50,7 @@ public class BasicEnemy : Enemy
 
         if (Mathf.Acos(isInViewingCone) < _attentionAngleInRadians / 2 && Vector3.Distance(_player.position, this.transform.position) < _attackRadius)
         {
-            _state = EnemyState.alerted;
+            State = EnemyState.alerted;
         }
     }
 
@@ -68,14 +70,14 @@ public class BasicEnemy : Enemy
        
         if (_player == null)
         {
-            _state = EnemyState.passive;
+            State = EnemyState.passive;
             return;
         }
 
-        if (!_playerStealthBehaviour.IsStealth)
+        if (!_playerStealthBehaviour.IsStealth && State == EnemyState.passive)
+        {
             InSightCalculation();
-
-
+        }
     }
 
     private void LookAtPlayer()

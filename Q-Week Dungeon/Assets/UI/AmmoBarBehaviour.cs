@@ -26,12 +26,11 @@ public class AmmoBarBehaviour : MonoBehaviour
         else
         {
             
-            if (_currentAmmo == _player.ShootingBehaviour._currentWeapon.MagazineSize && !_reloaded)
+            if (_currentAmmo == _player.ShootingBehaviour.CurrentWeapon.MagazineSize && !_reloaded)
                 InstantiateAmmo();
             
-            if(_currentAmmo > _player.ShootingBehaviour._currentWeapon.Ammo) 
+            if(_currentAmmo > _player.ShootingBehaviour.CurrentWeapon.Ammo) 
             {
-                Debug.Log(_currentAmmo);
                 DeleteInstantion(_currentAmmo - 1);                
                 _reloaded = false;
             }
@@ -40,7 +39,7 @@ public class AmmoBarBehaviour : MonoBehaviour
                 _reloaded = false;
             }                
 
-            _currentAmmo = _player.ShootingBehaviour._currentWeapon.Ammo;
+            _currentAmmo = _player.ShootingBehaviour.CurrentWeapon.Ammo;
         }
     }
 
@@ -60,11 +59,11 @@ public class AmmoBarBehaviour : MonoBehaviour
             }
         }
 
-        _ammoArray = new GameObject[_player.ShootingBehaviour._currentWeapon.MagazineSize];
-        _currentAmmo = _player.ShootingBehaviour._currentWeapon.MagazineSize;
+        _ammoArray = new GameObject[_player.ShootingBehaviour.CurrentWeapon.MagazineSize];
+        _currentAmmo = _player.ShootingBehaviour.CurrentWeapon.MagazineSize;
         _reloaded = true;
 
-        float scale = 1.0f / _player.ShootingBehaviour._currentWeapon.MagazineSize;
+        float scale = 1.0f / _player.ShootingBehaviour.CurrentWeapon.MagazineSize;
         float currentScale = 1.0f;
 
 

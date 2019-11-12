@@ -12,9 +12,9 @@ Rigidbody:
   m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &8401497721004177767
 PrefabInstance:
@@ -27,6 +27,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: _startHealth
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7575141118748401395, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
@@ -88,17 +93,17 @@ PrefabInstance:
       propertyPath: _attackRadius
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2638639081380539063, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: _movementSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 524321922220167706, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: _primaryGunTemplate
       value: 
       objectReference: {fileID: 5142113915974699866, guid: 46d859293cd207c4db18f6320a9a289d,
         type: 3}
-    - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
-        type: 3}
-      propertyPath: _startHealth
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 1716261628, guid: b2027c4edadc2ca48bf0af32051f9fba, type: 3}
       propertyPath: m_Enabled
       value: 1

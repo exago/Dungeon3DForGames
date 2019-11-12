@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ShootingBehaviour : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class ShootingBehaviour : MonoBehaviour
     [SerializeField]
     private Transform _primarySocket = null;
 
-    public Weapon _currentWeapon = null;
+    public Weapon CurrentWeapon = null;
+
+    private bool _playerCanShoot = false;
+    private bool _checkForSound = false;
 
     private void Awake()
     {
@@ -18,33 +22,72 @@ public class ShootingBehaviour : MonoBehaviour
             GameObject g = Instantiate(_primaryGunTemplate, _primarySocket);
             g.transform.localPosition = Vector3.zero;
             g.transform.localRotation = Quaternion.identity;
-            _currentWeapon = g.GetComponent<Weapon>();
+            CurrentWeapon = g.GetComponent<Weapon>();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_checkForSound)
+            CheckSound();
+    }
+
+    private void CheckSound()
+    {
+        Collider[] enemies = Physics.OverlapSphere(this.transform.position, CurrentWeapon.SoundRadius, 1 << 9);
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i].GetComponent<Enemy>().State != EnemyState.active)
+                enemies[i].GetComponent<Enemy>().State = EnemyState.alerted;
         }
     }
 
     public void Fire()
     {
-        if (!_currentWeapon)
+        if (!CurrentWeapon)
         {
             Debug.Log(this.gameObject + "doesn't have a gun");
         }
+        
+        if(CurrentWeapon.Ammo != 0)
+        {
+            if(this.gameObject.layer == 13)
+            {
+                if (_playerCanShoot)
+                {
+                    CurrentWeapon.Shoot();
+                    _checkForSound = true;      
+                    
+                }
+                    
+            }
+            else
+                CurrentWeapon.Shoot();
+        }
+            
+    }
 
-        if(_currentWeapon.Ammo!= 0)
-            _currentWeapon.Shoot();
+    public void Release()
+    {
+        CurrentWeapon.Release();
+        _playerCanShoot = true;
+        _checkForSound = false;
     }
 
     public void Reload()
     {
-        if (!_currentWeapon)
+        if (!CurrentWeapon)
         {
             return;
         }
             
 
-        if(_currentWeapon.Ammo != _currentWeapon.MagazineSize)
+        if(CurrentWeapon.Ammo != CurrentWeapon.MagazineSize)
         {
-            _currentWeapon.Reload();
+            CurrentWeapon.Reload();
         }
 
     }
+
 }

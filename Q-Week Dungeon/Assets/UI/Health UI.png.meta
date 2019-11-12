@@ -245,9 +245,9 @@ TextureImporter:
       name: AmmoBorder
       rect:
         serializedVersion: 2
-        x: 63
+        x: 11
         y: 0
-        width: 421
+        width: 423
         height: 75
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -266,7 +266,7 @@ TextureImporter:
       name: HealthBorder
       rect:
         serializedVersion: 2
-        x: 63
+        x: 17
         y: 74
         width: 458
         height: 78

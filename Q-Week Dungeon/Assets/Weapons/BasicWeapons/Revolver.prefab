@@ -303,3 +303,5 @@ MonoBehaviour:
   _fireOutputPositions:
   - {fileID: 3663811581834250379}
   _damage: 20
+  Icon: {fileID: 21300000, guid: 37099e6048734e343be28848d8d86ce4, type: 3}
+  _soundRadius: 18

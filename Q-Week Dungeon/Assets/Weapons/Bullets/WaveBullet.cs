@@ -32,7 +32,8 @@ public class WaveBullet : Bullet
         if(_amplitude + _increaseAmplitudeOverTime > MIN_AMPLITUDE)
             _amplitude += _increaseAmplitudeOverTime * Time.deltaTime;
 
-        pos += this.transform.forward * Time.deltaTime * _movementSpeed;        
+        pos += this.transform.forward * Time.deltaTime * _movementSpeed;
+        Debug.Log(_movementSpeed);
         Vector3 sinusMovement = this.transform.right * Mathf.Sin(_timer * _frequency) * _amplitude;
         this.transform.position = sinusMovement * (int)_sideToStart + pos;
     }

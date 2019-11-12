@@ -32,7 +32,8 @@ public class DoorBehaviour : AnimatedObjectBehaviour
 
     public override void Interaction()
     {
-        OpenDoor();
+        if(RoomManager.CanOpenDoors)
+            OpenDoor();
     }
 
     private void AutomaticClosingDoor()
