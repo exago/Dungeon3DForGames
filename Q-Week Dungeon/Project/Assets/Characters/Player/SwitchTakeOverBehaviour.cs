@@ -32,24 +32,16 @@ public class SwitchTakeOverBehaviour : MonoBehaviour
     {
         if (_canSwitch)
         {
-            TimeBehaviour.StartSlowMotion(0.35f);
+            TimeBehaviour.StartSlowMotion(0.6f);
             IsSwitching = true;
             _canSwitch = false;
             _takeOverBehaviour.ReturnToNormal();
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (_throwKnife && !_threwOnce)
-        {
-            ThrowKnife();
-        }
-    }
 
     private void ThrowKnife()
     {
-
         GameObject knife = Instantiate(_throwKnifePrefab, _throwKnifePosition.position, _throwKnifePosition.rotation);
         knife.GetComponent<ThrowKnifeBehaviour>().TakeOverBehaviour = _takeOverBehaviour;
         _throwKnife = false;
@@ -58,6 +50,10 @@ public class SwitchTakeOverBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (_throwKnife && !_threwOnce)
+        {
+            ThrowKnife();
+        }
         if (IsSwitching)
         {
             CheckTimer();
@@ -78,6 +74,8 @@ public class SwitchTakeOverBehaviour : MonoBehaviour
         {
             _cooldownTimer = 0.0f;
             _canSwitch = true;
+            _threwOnce = false;
+            _throwKnife = false;
         }
     }
 
@@ -90,7 +88,7 @@ public class SwitchTakeOverBehaviour : MonoBehaviour
             IsSwitching = false;
             TimeBehaviour.EndSlowMotion();
             _switchTimer = 0.0f;
-            _threwOnce = false;
+            _throwKnife = false;
         }
     }
 

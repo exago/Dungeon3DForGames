@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4323230320f3ae47a790466ec204d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRadius: 20
+  _attackRadius: 15
   _distanceToCloseIn: 6
   _attentionAngleInDegrees: 60
   _enemyTimeToTakeAction: 1
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d206d578d16f9c44b8cd4e51486c07e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHealth: 20
+  _startHealth: 60
   _maxHealth: 500
 --- !u!114 &2638639081380539063
 MonoBehaviour:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1fb14989d13ba40ad759493b9b15c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 9
+  _movementSpeed: 7
 --- !u!54 &2893719989512442540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &8356136979131762470
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,14 +14,14 @@ public class MovementBehaviour : MonoBehaviour
     protected Vector3 _desiredMovementDirection = Vector3.zero;
     public Vector3 DesiredMovementDirection { get { return _desiredMovementDirection; } set { _desiredMovementDirection = value; } }
 
-    protected Vector3 _desiredLookAtPoint = Vector3.zero;
+    protected Vector3 _desiredLookAtPoint;
     public Vector3 DesiredLookAtPoint { get { return _desiredLookAtPoint; } set {   _desiredLookAtPoint = value; } }
     
 
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _desiredLookAtPoint =  transform.forward;
+        _desiredLookAtPoint = 1.1f *transform.forward;
     }
 
     // Update is called once per frame
@@ -45,8 +45,8 @@ public class MovementBehaviour : MonoBehaviour
 
     protected virtual void HandleRotation()
     {
-        _desiredLookAtPoint.y = this.transform.position.y;
+        _desiredLookAtPoint.y = 0f;
         //transform.LookAt(_desiredLookAtPoint, Vector3.up);
-        Rigidbody.MoveRotation(Quaternion.LookRotation(_desiredLookAtPoint - this.transform.position, Vector3.up));
+        Rigidbody.MoveRotation(Quaternion.LookRotation(_desiredLookAtPoint, Vector3.up));
     }
 }

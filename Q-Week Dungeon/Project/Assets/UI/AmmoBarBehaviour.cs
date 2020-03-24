@@ -21,7 +21,7 @@ public class AmmoBarBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if(_player == null)
+        if(_player == null || _player.ShootingBehaviour.CurrentWeapon == null)
             FindObjectOfType<Player>().GetComponent<Player>();
         else
         {

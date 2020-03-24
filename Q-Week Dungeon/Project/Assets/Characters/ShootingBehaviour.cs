@@ -13,16 +13,36 @@ public class ShootingBehaviour : MonoBehaviour
 
     private bool _playerCanShoot = false;
     private bool _checkForSound = false;
+    [SerializeField] private AudioClip _initialReloadSound = null;
 
     private void Awake()
     {
         //SpawnGuns
-        if (_primaryGunTemplate && _primarySocket)
+        SpawnGuns(null);
+    }
+
+    public void SpawnGuns(GameObject gunPrefab)
+    {
+        if (_primarySocket)
         {
-            GameObject g = Instantiate(_primaryGunTemplate, _primarySocket);
-            g.transform.localPosition = Vector3.zero;
-            g.transform.localRotation = Quaternion.identity;
-            CurrentWeapon = g.GetComponent<Weapon>();
+            if(CurrentWeapon == null)
+            {
+                if (_primaryGunTemplate)
+                {
+                    GameObject g = Instantiate(_primaryGunTemplate, _primarySocket);
+                    g.transform.localPosition = Vector3.zero;
+                    g.transform.localRotation = Quaternion.identity;
+                    CurrentWeapon = g.GetComponent<Weapon>();
+                }
+            }
+            else
+            {
+                GameObject g = Instantiate(gunPrefab, _primarySocket);
+                g.transform.localPosition = Vector3.zero;
+                g.transform.localRotation = Quaternion.identity;
+                CurrentWeapon = g.GetComponent<Weapon>();
+            }
+            
         }
     }
 
@@ -86,6 +106,8 @@ public class ShootingBehaviour : MonoBehaviour
         if(CurrentWeapon.Ammo != CurrentWeapon.MagazineSize)
         {
             CurrentWeapon.Reload();
+            if(this.gameObject.tag == "Player")
+                AudioManager.Instance.PlayAudioClip(_initialReloadSound);
         }
 
     }

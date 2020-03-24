@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     private Player _player;
     [SerializeField]
-    private Collider _spawnRoom;
+    private Collider _spawnRoom = null;
 
     private void Awake()
     {
@@ -27,6 +27,8 @@ public class GameOver : MonoBehaviour
 
     private void TriggerGameOver()
     {
-        SceneManager.LoadScene(0);
+        TimeBehaviour.EndSlowMotion();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }

@@ -6,7 +6,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject _enemy = null;
     [SerializeField]
-    private int _amountOfEnemies;
+    private int _amountOfEnemies = 0;
 
     [SerializeField]
     private float _radius = 5;
@@ -45,7 +45,6 @@ public class EnemySpawnerBehaviour : MonoBehaviour
         angle *= i + 90;
 
         Quaternion rotation = Quaternion.Euler(0, angle, 0);
-        Debug.Log(rotation.eulerAngles);
 
         return rotation;
     }

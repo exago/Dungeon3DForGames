@@ -12,11 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotgun
       objectReference: {fileID: 0}
-    - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
-        type: 3}
-      propertyPath: _startHealth
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 7575141118748401395, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,10 +67,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7873934306817423157, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: _startHealth
+      value: 95
+      objectReference: {fileID: 0}
     - target: {fileID: 7778556788330460196, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: _attackRadius
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7778556788330460196, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
@@ -87,10 +87,15 @@ PrefabInstance:
       propertyPath: _attentionAngleInDegrees
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7778556788330460196, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: _distanceToCloseIn
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2638639081380539063, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: _movementSpeed
-      value: 11
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 524321922220167706, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
@@ -98,6 +103,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6890024235727716263, guid: 11956ba0c5afa4842a4493ea71246292,
         type: 3}
+    - target: {fileID: 2893719989512442540, guid: b2027c4edadc2ca48bf0af32051f9fba,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5014012367777599204, guid: b2027c4edadc2ca48bf0af32051f9fba,
         type: 3}
       propertyPath: m_IsKinematic

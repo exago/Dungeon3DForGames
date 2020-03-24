@@ -67,8 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6203696e8dc7f418f826972606f5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timedHighlight: 0
+  _timeOfHighlight: 0
   _highlightMaterial: {fileID: 2100000, guid: 219311f7062a74b49b80300a5f534302, type: 2}
   _closeDoorTimer: 3
+  _doorSound: {fileID: 8300000, guid: da2a7892803f08a4eb5ff72e7e6fa046, type: 3}
 --- !u!114 &2774294980380349175
 MonoBehaviour:
   m_ObjectHideFlags: 0

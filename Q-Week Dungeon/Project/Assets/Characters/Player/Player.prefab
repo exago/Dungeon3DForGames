@@ -241,6 +241,7 @@ MonoBehaviour:
     type: 3}
   _primarySocket: {fileID: 6464394705621366577}
   CurrentWeapon: {fileID: 0}
+  _initialReloadSound: {fileID: 8300000, guid: a4fc97fc1d291314aab8f869150d679d, type: 3}
 --- !u!114 &9113833949361567130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,8 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSwitching: 0
-  _switchTime: 3
-  _switchCooldownTime: 8
+  _switchTime: 1.87
+  _switchCooldownTime: 4.3
   _throwKnifePosition: {fileID: 7095276627610625228}
   _throwKnifePrefab: {fileID: 1904741592124439039, guid: d6258aee6c8577947b16928c7eecd6cb,
     type: 3}

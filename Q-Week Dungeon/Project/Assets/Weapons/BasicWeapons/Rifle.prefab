@@ -154,17 +154,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0837a50e0bbf7448a956e791505354c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _magazineSize: 20
-  _attackSpeed: 0.15
+  _magazineSize: 6
+  _attackSpeed: 0.2
   _reloadTime: 1.12
+  _initialReloadSound: {fileID: 8300000, guid: a4fc97fc1d291314aab8f869150d679d, type: 3}
+  _fullMagazineAfterReloadSound: {fileID: 8300000, guid: d022e0824cfa6ba4f888f899cb59c6e9,
+    type: 3}
   _bulletSpeed: 12
   _bulletPrefab: {fileID: 7781784210533031244, guid: 1aac7e6594b6d4f4098afa9faade71d5,
     type: 3}
+  _shootAudio: {fileID: 8300000, guid: 8175758b459a98f4698feab950f1007f, type: 3}
   _fireOutputPositions:
   - {fileID: 7245832100093853238}
-  _damage: 20
+  _damage: 10
   Icon: {fileID: 21300000, guid: 2ce04e279bb2a8e438fd1f03192ab22e, type: 3}
-  _soundRadius: 22
+  _soundRadius: 15
 --- !u!1 &4207267264885702352
 GameObject:
   m_ObjectHideFlags: 0

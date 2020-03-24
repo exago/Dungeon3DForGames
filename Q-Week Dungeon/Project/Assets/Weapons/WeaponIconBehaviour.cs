@@ -20,9 +20,8 @@ public class WeaponIconBehaviour : MonoBehaviour
             _player = FindObjectOfType<Player>().GetComponent<Player>();
         else
         {
-            _thisImage.sprite = _player.ShootingBehaviour.CurrentWeapon.Icon;
+            if(_player.ShootingBehaviour.CurrentWeapon != null)
+                _thisImage.sprite = _player.ShootingBehaviour.CurrentWeapon.Icon;
         }
-        
-
     }
 }

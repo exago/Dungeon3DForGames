@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
 
         //Rotation
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(mouseRay.origin, mouseRay.direction);
 
         Vector3 positionOfMouseInWorld = transform.position;
 
@@ -63,8 +64,7 @@ public class Player : MonoBehaviour
             positionOfMouseInWorld = hitInfo.point;
         }
 
-        positionOfMouseInWorld.y = transform.position.y;
-        MovementBehaviour.DesiredLookAtPoint = positionOfMouseInWorld;
+        MovementBehaviour.DesiredLookAtPoint = positionOfMouseInWorld - this.transform.position;
     }
     private void HandleGeneralInput()
     {
@@ -77,8 +77,7 @@ public class Player : MonoBehaviour
                 _swithcTakeOverBehaviour.SwitchTakeOver();
             else
                 ShootingBehaviour.Fire();
-        }
-     
+        }     
         
         if (Input.GetButton("Defend"))
             _defendingBehaviour.Defend();

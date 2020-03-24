@@ -33,6 +33,7 @@ public class Knife : Weapon
 
     private void FixedUpdate()
     {
+        Debug.Log(_ammo);
         if (_isStabbing)
         {
             RaycastHit hit;
@@ -91,7 +92,6 @@ public class Knife : Weapon
         //check if player attacks from behind
         float dotProductResult = Vector3.Dot(playerForwardVector, enemyForwardVector);
         dotProductResult = dotProductResult / (playerForwardVector.magnitude * enemyForwardVector.magnitude);
-        Debug.Log(Mathf.Acos(dotProductResult));
         if (Mathf.Acos(dotProductResult) < _acceptedAngleFromBehindInRadians)
         {
             _takeOverBehaviour.TakeOver(hit.collider.gameObject);

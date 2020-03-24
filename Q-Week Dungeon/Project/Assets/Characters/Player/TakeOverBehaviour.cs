@@ -71,6 +71,7 @@ public class TakeOverBehaviour : MonoBehaviour
         _playerScript.HealthBehaviour = target.GetComponent<HealthBehaviour>();
         TakenOver = true;
         _takeOverObject.layer = 13;
+        _takeOverObject.tag = "Player";
 
         RoomManager.SetEnemyCounterAsync();
     }
@@ -90,7 +91,7 @@ public class TakeOverBehaviour : MonoBehaviour
 
         this.transform.position = transform.position + Vector3.up;
         _playerRigidbody.position = _playerRigidbody.position + Vector3.up;
-        _playerRigidbody.AddForce(_knockBackPower * -transform.forward.normalized, ForceMode.Impulse);
+        //_playerRigidbody.AddForce(_knockBackPower * -transform.forward.normalized, ForceMode.Impulse);
 
 
         _playerScript.MovementBehaviour.Rigidbody = _playerRigidbody;

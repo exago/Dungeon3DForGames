@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     protected HealthBehaviour _healthBehaviour = null;
     protected LootDropBehaviour _lootDropBehaviour = null;
 
+    protected AudioClip _hitSound = null;
+
     protected Transform _player = null;
     [SerializeField]
     protected float _attackRadius = 15.0f;
@@ -51,7 +53,15 @@ public class Enemy : MonoBehaviour
 
     protected virtual void BehaviourPerState() { }
 
-    public virtual void DoWhenDead() { _healthBehaviour.Kill(); _lootDropBehaviour.Drop(); RoomManager.SetEnemyCounterAsync(); }
+    public virtual void DoWhenDead() 
+    { 
+        _healthBehaviour.Kill(); 
+        _lootDropBehaviour.Drop(); 
+        RoomManager.SetEnemyCounterAsync(); 
+
+        if(_hitSound)
+            AudioManager.Instance.PlayAudioClip(_hitSound); 
+    }
 
 
     protected void CheckForReload()

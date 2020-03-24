@@ -9,6 +9,7 @@ public class ExplosionBarrelScript : AnimatedObjectBehaviour
     private HealthBehaviour _healthBehaviour = null;
 
     [SerializeField] private float _explosionTimer = 0.5f;
+    [SerializeField] private AudioClip _explosionAudio = null;
 
     protected override void Awake()
     {
@@ -46,6 +47,8 @@ public class ExplosionBarrelScript : AnimatedObjectBehaviour
     private void Explode()
     {
         _explosionBehaviour.Explode();
+
+        AudioManager.Instance.PlayAudioClip(_explosionAudio);
 
         _healthBehaviour.Kill();
     }

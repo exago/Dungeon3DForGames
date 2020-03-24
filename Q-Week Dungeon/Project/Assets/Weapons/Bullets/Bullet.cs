@@ -35,6 +35,8 @@ public class Bullet : MonoBehaviour
             health.TakeDamage(_damage);
 
             if (highlight != null) highlight.Highlight = true;
+
+
         }
         else
         {

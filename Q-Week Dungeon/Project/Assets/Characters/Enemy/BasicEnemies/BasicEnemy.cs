@@ -34,8 +34,6 @@ public class BasicEnemy : Enemy
 
         if (distance > _distanceToCloseIn)
             _movementBehaviour.DesiredMovementDirection = (_player.position - transform.position).normalized;
-        else
-            _movementBehaviour.DesiredMovementDirection = Vector3.zero;
     }
     private void InSightCalculation()
     {
@@ -84,7 +82,7 @@ public class BasicEnemy : Enemy
     {
         Vector3 lookAtPoint = _player.position;
         lookAtPoint.y = this.transform.position.y;
-        _movementBehaviour.DesiredLookAtPoint = lookAtPoint;
+        _movementBehaviour.DesiredLookAtPoint = lookAtPoint - this.transform.position;
     }
 
 }

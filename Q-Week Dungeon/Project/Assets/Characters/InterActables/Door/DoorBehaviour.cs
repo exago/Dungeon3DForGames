@@ -12,6 +12,8 @@ public class DoorBehaviour : AnimatedObjectBehaviour
     private float _closeDoorTimer = 3.0f;
     private float _timerForClosingDoor = 0;
 
+    [SerializeField] private AudioClip _doorSound = null;
+
     private Collider _thisCollider = null;
 
     protected override void Awake()
@@ -60,7 +62,10 @@ public class DoorBehaviour : AnimatedObjectBehaviour
     protected override void SetAnimation()
     {
         if (_isDoorOpen != _animationControlBehaviour.IsOpen)
+        {
             _animationControlBehaviour.IsOpen = _isDoorOpen;
+            AudioManager.Instance.PlayAudioClip(_doorSound);
+        }
 
     }
     private void OpenDoor()

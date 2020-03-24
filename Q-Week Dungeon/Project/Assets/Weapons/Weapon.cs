@@ -17,10 +17,14 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected float _reloadTime = 0.0f;
 
+    [SerializeField] private AudioClip _fullMagazineAfterReloadSound = null;
+
     [SerializeField]
     protected float _bulletSpeed = 0.0f;
     [SerializeField]
     protected GameObject _bulletPrefab = null;
+
+    [SerializeField] protected AudioClip _shootAudio = null;
 
     [SerializeField]
     protected List<Transform> _fireOutputPositions = new List<Transform>();
@@ -55,6 +59,7 @@ public class Weapon : MonoBehaviour
             _canShoot = false;
         else if (_ammo >= 0)
         {
+            AudioManager.Instance.PlayAudioClip(_shootAudio);
             _canShoot = true;
             _fireTimer = 0.0f;
             _ammo--;
@@ -62,7 +67,7 @@ public class Weapon : MonoBehaviour
 
     }
     public virtual void Reload() 
-    {
+    {        
         if (_ammo != _magazineSize)
             Invoke("FillMagazine", _reloadTime);
     }
@@ -74,6 +79,7 @@ public class Weapon : MonoBehaviour
 
     private void FillMagazine()
     {
+        AudioManager.Instance.PlayAudioClip(_fullMagazineAfterReloadSound);
         _ammo = _magazineSize;
     }
 }
